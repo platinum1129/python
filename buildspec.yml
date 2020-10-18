@@ -1,0 +1,14 @@
+version: 0.1
+
+phases:
+  install:
+    commands:
+      - echo 'install phase'
+  build:
+    commands:
+      - echo 'build phase'
+artifacts:
+  type: zip
+  files:
+    - "**/*"
+  discard-paths: no
