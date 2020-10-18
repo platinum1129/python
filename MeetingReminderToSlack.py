@@ -21,7 +21,7 @@ def get_200_response(message):
 def lambda_handler(event, context):
     # holiday decision
     if is_holiday(datetime.date.today()):
-        return get_200_response('Today is a holiday.')
+        return get_200_response('Today is a holiday..')
 
     ############################################################
     # Zoom
