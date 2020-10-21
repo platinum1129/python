@@ -10,7 +10,7 @@
         }
     },
     "Resources": {
-        "PostZoomMeeting": {
+        "PostZoomMeeting1022": {
             "Type": "AWS::Lambda::Function",
             "Properties": {
                 "FunctionName": "PostZoomMeeting1022",
