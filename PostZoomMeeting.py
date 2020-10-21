@@ -50,17 +50,17 @@ def lambda_handler(event, context):
             })
         }
     
-    #SlackMessageに「zoom」が入っていたときの処理
+    #SlackMessageに「zoom」が入っている場合
     body_text = body.get('event').get('text')
     logging.info("body_text:" + body_text)
-    if 'zoom' in body_text:
+    if 'zoom' in body_text.lower(): # ignore-case
         host_user = get_email(body.get('event').get('user'))
         logging.info("host_user:" + host_user)
         join_url = get_meeting_url(host_user)
         logging.info("join_url:" + join_url)
 
         ts = None
-        if ('thread_ts' in body.get('event')):
+        if 'thread_ts' in body.get('event'):
             # thread_ts は スレッドのルート
             ts = body.get('event').get('thread_ts')
         else:
