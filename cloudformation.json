@@ -24,7 +24,7 @@
                 },
                 "Description": "create by codepipeline",
                 "Handler": "PostZoomMeeting.lambda_handler",
-                "Role": "arn:aws:iam::674607486925:role/MatsuCloudFormationRole",
+                "Role": "arn:aws:iam::674607486925:role/MatsuLambdaRole",
                 "Runtime": "python3.8",
                 "Environment": {
                     "Variables": {
