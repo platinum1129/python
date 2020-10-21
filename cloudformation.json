@@ -1,0 +1,33 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Description": "20201022",
+    "Parameters": {
+        "LatestS3Bucket": {
+            "Type": "String"
+        },
+        "LatestS3Key": {
+            "Type": "String"
+        }
+    },
+    "Resources": {
+        "PostZoomMeeting": {
+            "Type": "AWS::Lambda::Function",
+            "Properties": {
+                "FunctionName": "PostZoomMeeting1022",
+                "Code": {
+                    "S3Bucket": {
+                        "Ref": "LatestS3Bucket"
+                    },
+                    "S3Key": {
+                        "Ref": "LatestS3Key"
+                    }
+                },
+                "Description": "create by codepipeline",
+                "Handler": "PostZoomMeeting.lambda_handler",
+                "Runtime": "python3.8",
+                "Timeout": 10,
+                "MemorySize": 128
+            }
+        }
+    }
+}
