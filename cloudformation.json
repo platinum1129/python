@@ -26,6 +26,11 @@
                 "Handler": "PostZoomMeeting.lambda_handler",
                 "Role": "arn:aws:iam::674607486925:role/MatsuCloudFormationRole",
                 "Runtime": "python3.8",
+                "Environment": {
+                    "Variables": {
+                        "HOGEHOGE": "あいうえお"
+                    }
+                },
                 "Timeout": 10,
                 "MemorySize": 128
             }
