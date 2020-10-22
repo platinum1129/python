@@ -29,7 +29,7 @@
                 "Environment": {
                     "Variables": {
                         "SLACK_OAUTH_TOKEN": "{{resolve:ssm:SLACK_OAUTH_TOKEN:1}}",
-                        "SLACK_BOT_TOKEN": "{{resolve:ssm:SLACK_BOT_TOKEN:1}}",
+                        "SLACK_BOT_TOKEN": "{{resolve:ssm:SLACK_BOT_TOKEN:2}}",
                         "SLACK_USER_NAME": "{{resolve:ssm:SLACK_USER_NAME:1}}",
                         "SLACK_CHANNEL_TEST": "{{resolve:ssm:SLACK_CHANNEL_TEST:1}}",
                         "SLACK_CHANNEL_MAIN": "{{resolve:ssm:SLACK_CHANNEL_MAIN:1}}",

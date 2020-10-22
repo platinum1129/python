@@ -108,6 +108,7 @@ def get_email(slack_user_id):
         body = res.read()
 
     dic = json.loads(body.decode("utf-8"))
+    logging.info(dic)
     email = dic["user"]["profile"]["email"]
     logging.info("email:"+ email)
 
