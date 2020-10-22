@@ -14,43 +14,6 @@
         }
     },
     "Resources": {
-        "Api": {
-            "Type": "AWS::ApiGateway::RestApi",
-            "Properties": {
-                "Name": "api"
-            }
-        },
-        "Resource": {
-            "Type": "AWS::ApiGateway::Resource"
-        },
-        "Properties": {
-            "RestApiId": {"Ref": "Api"},
-            "ParentId": {"Fn::GetAtt" : ["Api", "RootResourceId"]},
-            "PathPart": {"Fn::Sub": "${FunctionName}"}
-        },
-        "LambdaPermission": {
-            "Type": "AWS::Lambda::Permission",
-            "Properties": {
-                "FunctionName": {"Fn::Sub": "${FunctionName}"},
-                "Action": "lambda:InvokeFunction",
-                "Principal": "apigateway.amazonaws.com"
-            }
-        },
-        "ResourceMethod": {
-            "Type": "AWS::ApiGateway::Method",
-            "Properties": {
-                "RestApiId": {"Ref": "Api"},
-                "ResourceId": {"Ref": "Resource"},
-                "AuthorizationType": "None",
-                "HttpMethod": "POST",
-                "Integration": {
-                    "Type": "AWS",
-                    "IntegrationHttpMethod": "POST",
-                    "Uri": {"Fn::Sub": "arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:${FunctionName}/invocations"}
-                }
-            },
-            "DependsOn": "LambdaPermission"
-        },
         "PostZoomMeeting1022": {
             "Type": "AWS::Lambda::Function",
             "Properties": {
