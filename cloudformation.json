@@ -10,7 +10,7 @@
         },
         "FunctionName": {
             "Type": "String",
-            "Description": "PostZoomMeeting1022"
+            "Default": "PostZoomMeeting1022"
         }
     },
     "Resources": {
