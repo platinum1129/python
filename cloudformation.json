@@ -14,6 +14,12 @@
         }
     },
     "Resources": {
+        "Api": {
+            "Type": "AWS::ApiGateway::RestApi",
+            "Properties": {
+                "Name": "api"
+            }
+        },
         "PostZoomMeeting1022": {
             "Type": "AWS::Lambda::Function",
             "Properties": {
