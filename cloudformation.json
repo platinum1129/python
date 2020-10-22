@@ -28,7 +28,14 @@
                 "Runtime": "python3.8",
                 "Environment": {
                     "Variables": {
-                        "HOGEHOGE": "あいうえお"
+                        "SLACK_OAUTH_TOKEN": "{{resolve:ssm-secure:SLACK_OAUTH_TOKEN:1}}",
+                        "SLACK_BOT_TOKEN": "{{resolve:ssm-secure:SLACK_BOT_TOKEN:1}}",
+                        "SLACK_USER_NAME": "{{resolve:ssm-secure:SLACK_USER_NAME:1}}",
+                        "SLACK_CHANNEL_TEST": "{{resolve:ssm-secure:SLACK_CHANNEL_TEST:1}}",
+                        "SLACK_CHANNEL_MAIN": "{{resolve:ssm-secure:SLACK_CHANNEL_MAIN:1}}",
+                        "ZOOM_API_KEY": "{{resolve:ssm-secure:ZOOM_API_KEY:1}}",
+                        "ZOOM_API_SECRET": "{{resolve:ssm-secure:ZOOM_API_SECRET:1}}",
+                        "ZOOM_USER_ID": "{{resolve:ssm-secure:ZOOM_USER_ID:1}}"
                     }
                 },
                 "Timeout": 10,
