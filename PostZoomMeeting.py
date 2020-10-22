@@ -73,7 +73,7 @@ def lambda_handler(event, context):
             'Authorization': 'Bearer {0}'.format(SLACK_BOT_TOKEN)
         }
         data = {
-            'token': SLACK_OAUTH_TOKEN,
+            'token': SLACK_BOT_TOKEN,
             'channel': body.get('event').get('channel'),
             'text': 'ZoomUrl : ' + join_url,
             'username': SLACK_USER_NAME,
