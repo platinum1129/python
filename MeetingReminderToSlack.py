@@ -20,8 +20,10 @@ def get_200_response(message):
 
 def lambda_handler(event, context):
     # holiday decision
-    if is_holiday(datetime.date.today()):
-        return get_200_response('Today is a holiday..')
+    now = datetime.date.today()
+    today = str(now.year) + "/" + str(now.month) + "/" + str(now.day)
+    if is_holiday(today):
+        return get_200_response('Today is a holiday.')
 
     ############################################################
     # Zoom
@@ -94,7 +96,7 @@ def get_meeting_url():
     return dic["join_url"]
 
 ############################################################
-# 祝日判定
+# 祝日判定（today：YYYY/MM/DD）
 ############################################################
 def is_holiday(today):
     url = "https://www8.cao.go.jp/chosei/shukujitsu/syukujitsu.csv"
@@ -114,8 +116,15 @@ def is_holiday(today):
     add_company_holiday(holidays, '2021/1/2')
     add_company_holiday(holidays, '2021/1/3')
     add_company_holiday(holidays, '2021/1/4')
+    add_company_holiday(holidays, '2021/4/30')
+    add_company_holiday(holidays, '2021/12/29')
+    add_company_holiday(holidays, '2021/12/30')
+    add_company_holiday(holidays, '2021/12/31')
+    add_company_holiday(holidays, '2022/1/2')
+    add_company_holiday(holidays, '2022/1/3')
+    add_company_holiday(holidays, '2022/1/4')
 
-    return today.strftime('%Y/%m/%d') in holidays
+    return today in holidays
 
 def add_company_holiday(holidays, day):
     holidays[day] = {'day': day, 'name': '定休日'}
