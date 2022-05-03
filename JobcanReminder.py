@@ -22,13 +22,16 @@ def lambda_handler(event, context):
     # holiday decision
     now = datetime.date.today()
     today = str(now.year) + "/" + str(now.month) + "/" + str(now.day)
-#    if is_holiday(today):
-#        return get_200_response('Today is a holiday.')
+    if is_holiday(today):
+        return get_200_response('Today is a holiday.')
     
     # Button Message
-    hour = datetime.datetime.now().hour
+    t_delta = datetime.timedelta(hours=9)
+    JST = datetime.timezone(t_delta, 'JST')  # UTCから9時間差の「JST」タイムゾーン
+    nowJST = datetime.datetime.now(JST)  # タイムゾーン付きでローカルな日付と時刻を取得
+    print(nowJST)
     buttontext = ''
-    if hour < 12:
+    if nowJST.hour < 12:
         buttontext = '出　勤'
     else:
         buttontext = '退　勤'
@@ -44,9 +47,9 @@ def lambda_handler(event, context):
     }
     slack_obj = {
     	"token"		:	slack_token,
-    	"channel"	:	os.environ['SLACK_CHANNEL_TEST'],	#crd-test
+    	#"channel"	:	os.environ['SLACK_CHANNEL_TEST'],	#crd-test
     	#"channel"	:	os.environ['SLACK_CHANNEL_MAIN'],	#crd-circas
-    	#"channel"	:	os.environ['SLACK_CHANNEL_JOBCAN'],	#crd-jobcan
+    	"channel"	:	os.environ['SLACK_CHANNEL_JOBCAN'],	#crd-jobcan
         "text"		:	"<!channel>リマインダー : ジョブカンで「" + buttontext + "」を忘れずに！ https://id.jobcan.jp/users/sign_in",
     }
     slack_params = json.dumps(slack_obj).encode("utf-8")
@@ -72,7 +75,6 @@ def is_holiday(today):
         holidays[day] = {'day': day, 'name': name}
 
     # 年末年始定休日
-    add_company_holiday(holidays, '2022/5/2')
     add_company_holiday(holidays, '2023/1/2')
     add_company_holiday(holidays, '2023/1/3')
     add_company_holiday(holidays, '2023/1/4')
