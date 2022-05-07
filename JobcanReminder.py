@@ -19,19 +19,19 @@ def get_200_response(message):
     }
 
 def lambda_handler(event, context):
+    
     # holiday decision
-    now = datetime.date.today()
+    t_delta = datetime.timedelta(hours=9)
+    JST = datetime.timezone(t_delta, 'JST')  # UTCから9時間差の「JST」タイムゾーン
+    now = datetime.datetime.now(JST)  # タイムゾーン付きでローカルな日付と時刻を取得
+    print(now)
     today = str(now.year) + "/" + str(now.month) + "/" + str(now.day)
     if is_holiday(today):
         return get_200_response('Today is a holiday.')
-    
+
     # Button Message
-    t_delta = datetime.timedelta(hours=9)
-    JST = datetime.timezone(t_delta, 'JST')  # UTCから9時間差の「JST」タイムゾーン
-    nowJST = datetime.datetime.now(JST)  # タイムゾーン付きでローカルな日付と時刻を取得
-    print(nowJST)
     buttontext = ''
-    if nowJST.hour < 12:
+    if now.hour < 12:
         buttontext = '出　勤'
     else:
         buttontext = '退　勤'
