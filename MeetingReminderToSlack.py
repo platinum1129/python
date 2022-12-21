@@ -110,7 +110,14 @@ def is_holiday(today):
         holidays[day] = {'day': day, 'name': name}
 
     # 年末年始定休日
-    add_company_holiday(holidays, '2022/5/2')
+    add_company_holiday(holidays, '2022/12/22')
+    add_company_holiday(holidays, '2022/12/23')
+    add_company_holiday(holidays, '2022/12/26')
+    add_company_holiday(holidays, '2022/12/27')
+    add_company_holiday(holidays, '2022/12/28')
+    add_company_holiday(holidays, '2022/12/29')
+    add_company_holiday(holidays, '2022/12/30')
+    add_company_holiday(holidays, '2022/12/31')
     add_company_holiday(holidays, '2023/1/2')
     add_company_holiday(holidays, '2023/1/3')
     add_company_holiday(holidays, '2023/1/4')
